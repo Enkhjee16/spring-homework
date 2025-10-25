@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>SOAP Demo</title>
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/lux/bootstrap.min.css"
+            rel="stylesheet"
+    />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">Spring Homework</a>
+    </div>
+</nav>
+
+<main class="container py-5">
+    <h2>🧩 SOAP Service Demo</h2>
+    <p>This page sends a SOAP request to <code>dataaccess.com</code> and converts a number into words.</p>
+
+    <form th:action="@{/soap}" method="post" class="row g-3">
+        <div class="col-md-4">
+            <label class="form-label">Enter a number</label>
+            <input type="number" name="number" class="form-control" required>
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary w-100">Convert</button>
+        </div>
+    </form>
+
+    <div class="mt-4 alert alert-success" th:if="${result}">
+        <strong th:text="${number}"></strong> →
+        <span th:text="${result}"></span>
+    </div>
+
+    <p class="mt-4"><a th:href="@{/}" class="btn btn-outline-secondary">← Back to Home</a></p>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
