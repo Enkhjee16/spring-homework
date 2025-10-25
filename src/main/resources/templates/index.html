@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Spring Homework</title>
+
+    <!-- ✅ Add Bootswatch Lux Theme -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/lux/bootstrap.min.css"
+            rel="stylesheet"
+    />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">Spring Homework</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" th:href="@{/forex}">Forex</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/soap}">SOAP (soon)</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main class="container py-4">
+    <h1 th:text="${message}">Welcome to Spring Homework</h1>
+    <p class="text-secondary">Rendered using Thymeleaf + Bootswatch Lux.</p>
+
+    <a class="btn btn-primary me-2" th:href="@{/forex}">Open Forex Converter</a>
+</main>
+
+<!-- ✅ Put JS here (end of body) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

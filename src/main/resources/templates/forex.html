@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Forex Converter</title>
+
+    <!-- Bootswatch Lux Theme -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/lux/bootstrap.min.css"
+            rel="stylesheet"
+    />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">Spring Homework</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" th:href="@{/forex}">Forex</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/soap}">SOAP (soon)</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main class="container py-5">
+    <h2 class="mb-4">💱 Forex Converter</h2>
+
+    <form th:action="@{/forex}" method="post" class="row g-3">
+        <div class="col-md-3">
+            <label class="form-label">Amount</label>
+            <input type="number" step="0.01" name="amount" th:value="${amount}" class="form-control" required>
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label">From</label>
+            <select name="from" th:value="${from}" class="form-select">
+                <option>USD</option><option>EUR</option><option>GBP</option>
+                <option>JPY</option><option>CHF</option><option>CNY</option>
+                <option>AUD</option><option>CAD</option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label">To</label>
+            <select name="to" th:value="${to}" class="form-select">
+                <option>EUR</option><option>USD</option><option>GBP</option>
+                <option>JPY</option><option>CHF</option><option>CNY</option>
+                <option>AUD</option><option>CAD</option>
+            </select>
+        </div>
+
+        <div class="col-md-3 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary w-100">Convert</button>
+        </div>
+    </form>
+
+    <div class="mt-4 alert alert-success" th:if="${result != null}">
+        <strong th:text="${amount}"></strong>
+        <span th:text="${from}"></span>
+        =
+        <strong th:text="${#numbers.formatDecimal(result, 0, 'COMMA', 2, 'POINT')}"></strong>
+        <span th:text="${to}"></span>
+    </div>
+
+    <p class="mt-4">
+        <a th:href="@{/}" class="btn btn-outline-secondary">← Back to Home</a>
+    </p>
+</main>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
